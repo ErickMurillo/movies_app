@@ -1,0 +1,20 @@
+<p>{{object.title}}</p>
+<p>{{object.year}}</p>
+<p>{{object.rated}}</p>
+<p>{{object.released_on}}</p>
+<p>{{object.genre}}</p>
+<p>{{object.rating}}</p>
+
+
+{% for review in reviews %}
+    <p>Rating: {{review.rating}} -- {{review.text}} -- {{review.user}}</p>
+{% endfor %}
+{% if user.is_authenticated %}
+<h3>add review</h3>
+<form method="post" enctype="multipart/form-data" action=".">{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Post">
+</form>
+{% else %}
+need to be authenticated to post a review
+{% endif %}

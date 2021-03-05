@@ -22,6 +22,12 @@ router = routers.DefaultRouter()
 router.register(r'movie', MovieView, 'movie')
 
 urlpatterns = [
+    path('', MovieListView.as_view(), name='index'),
+    path('<int:pk>/', MovieDetailView.as_view(), name='detail'),
+    path('create/', MovieCreateView.as_view(), name='create'),
+    path('update/<int:pk>/', MovieUpdateView.as_view(), name='update'),
+    path('delete/<int:pk>/', MovieDeleteView.as_view(), name='delete'),
+    
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]

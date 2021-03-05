@@ -1,0 +1,10 @@
+<h1>Movie list</h1>
+
+<a href='{% url 'create' %}'>New movie</a>
+{% for object in movie_list %}
+<h3><a href='{% url 'detail' object.pk %}'>{{object.title}}</a></h3>
+<p>{{object.rating|default:'0'}}</p>
+<a href='{% url 'update' object.pk %}'>edit</a>
+<a href='{% url 'delete' object.pk %}'>delete</a>
+<hr>
+{% endfor %}
