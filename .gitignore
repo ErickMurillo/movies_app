@@ -1,0 +1,17 @@
+*.log
+*.pot
+*.pyc
+local_settings.py
+*.db
+*.sqlite3
+static_media/uploads/
+CACHE/*
+ck_media/*
+*.DS_Store
+media/*
+env/*
+static/*
+whoosh/*
+*.txt~
+celerybeat-schedule
+*.sql
