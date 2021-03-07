@@ -58,7 +58,7 @@ class MovieDetailView(FormMixin,DetailView):
 		return super(MovieDetailView, self).form_valid(form)
 	
 	def get_success_url(self):
-		return reverse('detail', kwargs={'pk': self.object.pk})
+		return reverse('movies:detail', kwargs={'pk': self.object.pk})
 
 
 class MovieCreateView(CreateView):
@@ -67,7 +67,7 @@ class MovieCreateView(CreateView):
 	fields = ['title','year', 'rated', 'released_on', 'genre', 'director', 'plot']
 
 	def get_success_url(self):
-		return reverse('index')
+		return reverse('movies:index')
 
 class MovieUpdateView(UpdateView):
 	"""Update the requested movie."""
@@ -75,10 +75,10 @@ class MovieUpdateView(UpdateView):
 	fields = ['title','year', 'rated', 'released_on', 'genre', 'director', 'plot']
 
 	def get_success_url(self):
-		return reverse('index')
+		return reverse('movies:index')
 
 
 class MovieDeleteView(DeleteView):
 	"""Delete the requested movie."""
 	model = Movie
-	success_url = reverse_lazy('index')
+	success_url = reverse_lazy('movies:index')
