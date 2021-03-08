@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from .serializers import *
 from .models import *
 from django.db.models import Avg
@@ -22,6 +22,14 @@ class MovieListView(ListView):
 
 	def get_queryset(self):
 		return Movie.objects.annotate(rating=Avg('review__rating')).order_by('-released_on','-rating')
+
+class MovieListViewSearch(generics.ListAPIView):
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Movie.objects.filter(id = id)
+
 
 class ReviewForm(forms.ModelForm):
 	class Meta:

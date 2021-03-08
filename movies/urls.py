@@ -6,5 +6,6 @@ urlpatterns = [
     path('<int:pk>/', MovieDetailView.as_view(), name='detail'),
     path('create/', MovieCreateView.as_view(), name='create'),
     path('update/<int:pk>/', MovieUpdateView.as_view(), name='update'),
-    path('delete/<int:pk>/', MovieDeleteView.as_view(), name='delete')
+    path('delete/<int:pk>/', MovieDeleteView.as_view(), name='delete'),
+    path('api/movies/search/<id>', MovieListViewSearch.as_view())
     ]
